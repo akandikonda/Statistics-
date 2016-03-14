@@ -1,0 +1,67 @@
+
+ import java.util.Arrays;
+public class Statistics 
+{
+
+	/*The following method is used to compute the average or mean of the array
+	 that is selected by the user.*/
+
+	public static double Average (double[]array1)
+	{
+	double sum=0;
+	for (int i=0; i<array1.length;i++)
+	{
+		sum+=array1[i];
+	}
+	return (sum/array1.length);
+	}
+
+	/*The following is used compute the standard deviation using the previous
+	 average method*/
+
+	public static double StandardDeviation (double[]array1)
+	{
+	double Average = Average(array1);
+	double squareSum =0;
+	for (int i=0;i<array1.length;i++)
+	{
+		squareSum+=Math.pow(array1[i]-Average,2);
+	}
+	return Math.sqrt((squareSum)/(array1.length-1));
+	}
+
+	/*The following is used to compute the median using the array of data points
+	 selected by the user*/
+	
+	public static double Median(double[]array1)
+	{
+	Arrays.sort(array1);
+	int middle = array1.length/2;;
+	if (array1.length%2==1)
+	{
+		return array1[middle];
+	}
+	else {
+	return ((array1[middle-1]+array1[middle])/2.0);
+	}
+}
+	/**The following method is used to compute the mode using the array of data 
+	points selected by the user*/
+	
+	public static double Mode(double[]array1)
+	{
+	double max = 0,highestCount = 0;
+	for (int i=0;i<array1.length;++i){
+	int count =0;
+	for (int x=0;x<array1.length;++x){
+		if (array1[x]==array1[i]) ++count;
+	}
+	if (count>highestCount){
+		highestCount=count;
+		max= array1[i];	
+	}
+	}
+	return max;
+	}
+
+}
